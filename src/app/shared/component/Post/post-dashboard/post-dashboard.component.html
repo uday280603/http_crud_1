@@ -1,0 +1,40 @@
+
+<div class="container mt-3">
+    <div class="row  d-flex justify-content-end">
+        <button mat-raised-button color="primary" routerLink="addPost">Add Post</button>
+    </div>
+    <div class="row mt-3">
+    <!-- <div class="col-md-4 mb-4" *ngFor="let post of getAllPosts">
+        <div class="card h-100">
+            <div class="card-header">{{post.title}}</div>
+            <div class="card-body">{{post.body}}</div>
+            <div class="card-footer">
+                <button 
+                [routerLink]="[post.id]"
+                class="w-100"
+                mat-raised-button
+                color="primary"
+                >view details....</button>
+            </div>
+        </div>
+    </div> -->
+    <div class="col-md-4 mb-4">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between" *ngFor="let post of getAllPosts">
+               
+                <strong> {{post.title}}</strong>
+                <div>
+                   <button 
+                [routerLink]="[post.id]"
+                mat-raised-button
+                color="primary"
+                >Details</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-8">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+</div>
