@@ -1,5 +1,15 @@
-<app-navbar></app-navbar>
-<div class="row">
+
+
+
+
+<div class="spinner" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+</div>
+
+<!-- Rest of your page -->
+
+  <app-navbar></app-navbar>
+    <div class="row">
   <div class="col-md-12">
     <router-outlet></router-outlet>
   </div>

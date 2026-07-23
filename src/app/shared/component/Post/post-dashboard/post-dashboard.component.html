@@ -19,8 +19,8 @@
         </div>
     </div> -->
     <div class="col-md-4 mb-4">
-        <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between" *ngFor="let post of getAllPosts">
+        <ul class="list-group"  *ngIf="getAllPosts.length > 0 ; else NoData">
+            <li class="list-group-item d-flex justify-content-between" *ngFor="let post of getAllPosts ;trackBy: trackByFun">
                
                 <strong> {{post.title}}</strong>
                 <div>
@@ -33,8 +33,12 @@
             </li>
         </ul>
     </div>
-    <div class="col-md-8">
+    <!-- <div class="col-md-8">
         <router-outlet></router-outlet>
-    </div>
+    </div> -->
 </div>
 </div>
+
+<ng-template #NoData>
+    <p class="alert alert-danger text-center">No Post Yet..!</p>
+</ng-template>

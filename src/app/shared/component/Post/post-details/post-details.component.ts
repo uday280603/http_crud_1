@@ -4,6 +4,7 @@ import { ActivatedRoute, ActivationEnd, Params, Router } from '@angular/router';
 import { log } from 'console';
 import { PostService } from 'src/app/shared/service/post.service';
 import { GetConfirmComponent } from '../../Basic/get-confirm/get-confirm.component';
+import { SnackbarService } from 'src/app/shared/service/snackbar.service';
 
 @Component({
   selector: 'app-post-details',
@@ -19,6 +20,7 @@ export class PostDetailsComponent implements OnInit {
     private _postService: PostService,
     private _router: Router,
     private _matDialog: MatDialog,
+    private _snackbar : SnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -63,6 +65,7 @@ export class PostDetailsComponent implements OnInit {
         this._postService.removePost(this.postId).subscribe({
           next: (data) => {
             this._router.navigate(['post']);
+            this._snackbar.openSnackbar(`The post with id ${this.postId} is removed successfully..!`)
           },
           error: (err) => {
             console.log(err);

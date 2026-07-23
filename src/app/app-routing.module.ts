@@ -13,33 +13,19 @@ const routes: Routes = [
   ,{
     path :'post',
     component : PostDashboardComponent,
-    children : [
-      {
-    path :'addPost',
+  }
+  ,{
+    path :'post/addPost',
     component : PostFormComponent
   },
   {
-    path : ':id',
+    path : 'post/:id',
     component : PostDetailsComponent
   },
   {
-    path : ':id/edit',
+    path : 'post/:id/edit',
     component : PostFormComponent
   }
-    ]
-  }
-  // ,{
-  //   path :'post/addPost',
-  //   component : PostFormComponent
-  // },
-  // {
-  //   path : 'post/:id',
-  //   component : PostDetailsComponent
-  // },
-  // {
-  //   path : 'post/:id/edit',
-  //   component : PostFormComponent
-  // }
 ];
 
 @NgModule({

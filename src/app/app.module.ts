@@ -9,10 +9,12 @@ import { PostDetailsComponent } from './shared/component/Post/post-details/post-
 import { PostFormComponent } from './shared/component/Post/post-form/post-form.component';
 import { HomeComponent } from './shared/component/Basic/home/home.component';
 import { NavbarComponent } from './shared/component/Basic/navbar/navbar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/module/material.module';
 import { GetConfirmComponent } from './shared/component/Basic/get-confirm/get-confirm.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AuthInterCeptor } from './shared/service/auth-inter-ceptor.service';
 
 
 
@@ -32,11 +34,18 @@ import { GetConfirmComponent } from './shared/component/Basic/get-confirm/get-co
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    MatProgressSpinnerModule
 
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass : AuthInterCeptor,
+      multi : true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

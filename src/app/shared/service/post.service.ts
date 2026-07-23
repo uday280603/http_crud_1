@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { SpinnerService } from './spinner.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,9 +11,12 @@ export class PostService {
   POST_BASE_URL: string = environment.base_url;
   POST_URL = `${this.POST_BASE_URL}/posts.json`;
 
-  constructor(private _httpClient: HttpClient) {}
+  constructor(private _httpClient: HttpClient , 
+    private _spinnerService : SpinnerService
+  ) {}
 
   fetchAllPosts()  : Observable<any>{
+    // this._spinnerService.emitLodingFlag(true);
     return this._httpClient.get(this.POST_URL).pipe(
       map((obj: any) => {
         let postArry: Array<any> = [];
